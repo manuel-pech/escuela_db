@@ -37,6 +37,11 @@ $resultado = mysqli_query($connect, $consulta);
             <td><?php echo $fila["telefono"]?></td>
             <td><?php echo $fila["correo"]?></td>
             <td><?php echo $fila["estatus"]?></td>
+            <td><a href="formulario_profesores.php?id=<?php echo $fila['id']; ?>">agregar prof</a></td>
+            <td><a href="formulario_update.php?id=<?php echo $fila['id']; ?>" >editar prof</a></td>
+            <td><a href=detail.php?id=<?php echo $fila['id']; ?> > detallar prof</a></td>
+            <td><a href="eliminar.php?id=<?php echo $fila['id']; ?>">eliminarf</a></td>
+            
         </tr>
         <?php
         }

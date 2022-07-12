@@ -1,7 +1,8 @@
 <?php
+// llama a la base de datos//
 require_once("../lib/connect.php");
 $consulta = "SELECT * FROM materia";
-$resultado = mysqli_query($connect, $consulta);
+$materia = mysqli_query($connect, $consulta);
 
 ?>
 
@@ -26,7 +27,7 @@ $resultado = mysqli_query($connect, $consulta);
     </thead>
     <tbody>
         <?php
-        while($fila = mysqli_fetch_array($resultado))
+        while($fila = mysqli_fetch_array($materia))
         {
         ?>
         <tr>
@@ -34,6 +35,10 @@ $resultado = mysqli_query($connect, $consulta);
             <td><?php echo $fila["nombre"]?></td>
             <td><?php echo $fila["cuatrimestre"]?></td>
             <td><?php echo $fila["licenciatura"]?></td>
+            <td><a href="formulario_materia.php?id=<?php echo $fila['id']; ?>">agregar materia</a></td>
+            <td><a href=formulario_update.php?id=<?php echo $fila['id']; ?> >editar materia</a></td>
+            <td><a href=detail.php?id=<?php echo $fila['id']; ?> > detallar materria</a></td>
+            <td><a href=eliminar.php?id=<?php echo $fila['id']; ?> > eliminar</a></td>
         </tr>
         <?php
         }

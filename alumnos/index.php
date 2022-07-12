@@ -1,7 +1,6 @@
 <?php
-require_once("../lib/connect.php");
-$consulta = "SELECT * FROM alumnos";
-$resultado = mysqli_query($connect, $consulta);
+require_once("../lib/functions.php");
+$alumno = get_all_alumnos($connect);
 
 ?>
 
@@ -29,9 +28,11 @@ $resultado = mysqli_query($connect, $consulta);
     </thead>
     <tbody>
         <?php
-        while($fila = mysqli_fetch_array($resultado))
+        while($fila = mysqli_fetch_array($alumno))
         {
+
         ?>
+
         <tr>
             <td><?php echo $fila["id"]?></td>
             <td><?php echo $fila["nombre"]?></td>
@@ -41,8 +42,14 @@ $resultado = mysqli_query($connect, $consulta);
             <td><?php echo $fila["licenciatura"]?></td>
             <td><?php echo $fila["cuatrimestre"]?></td>
             <td><?php echo $fila["estatus"]?></td>
+            <td><a href=formulario.php?id=<?php echo $fila['id']; ?> >agregar alum</a></td>
+            <td><a href="formulari_update.php?id=<?php echo $fila['id']; ?>" >editar alum</a></td>
+            <td><a href=detail.php?id=<?php echo $fila['id']; ?> > detallar alum</a></td>
+            <td><a href="eliminar.php?id=<?php echo $fila['id']; ?>" >eliminar alum</a></td>
+
         </tr>
         <?php
+
         }
         ?>
 </tbody>
